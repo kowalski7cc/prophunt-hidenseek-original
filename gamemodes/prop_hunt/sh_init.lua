@@ -18,7 +18,7 @@ IncludePlayerClasses()
 GM.Name		= "Prop Hunt"
 GM.Author	= "Kow@lski (Original by AMT)"
 GM.Email	= "kowalski.7cc@xspacesoft.com"
-GM.Website	= "http://www.xspacesoft.com/"
+GM.Website	= "http://xspacesoft.github.io/PropHunt/"
 
 
 // Help info
