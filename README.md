@@ -6,6 +6,12 @@ F.A.Q.
 Q: How do i disguise as a prop? 
 A: First you need to be in the prop team. You need also a map with props, an when you are in front of it, press 'E'. 
 
+Q: How do I change a team?
+A: Just press 'F2'
+
+Q: How do I play a taunt?
+A: Just press 'F3'
+
 Q: How do I play the game? 
 A: You need at least one player for team (Props and Hunters). The props (initially with the Dr. Kleiner's skin) need to find a prop in a map and press 'E' to disguise as a prop. The Hunters need to fund props, and kill them. If a hunter shoot at the enemy team, he will gain life, else it will lost life. 
 
