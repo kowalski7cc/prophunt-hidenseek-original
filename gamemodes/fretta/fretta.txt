@@ -1,0 +1,10 @@
+"fretta"
+{
+	"base"				"base"
+	"title"				"Fretta Gamemode Base"
+	"menusystem"		"0"
+
+	"author_name"		"TEAM GARRY"
+	"author_email"		""
+	"author_url"		"http://www.garrysmod.com/"
+}
