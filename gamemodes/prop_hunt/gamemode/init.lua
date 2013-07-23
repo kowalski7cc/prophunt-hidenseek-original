@@ -224,7 +224,7 @@ end
 function GM:OnPreRoundStart(num)
 	game.CleanUpMap()
 	
-	if GetGlobalInt("RoundNumber") != 1 && SWAP_TEAMS_EVERY_ROUND == 1 && (team.GetScore(TEAM_PROPS) + team.GetScore(TEAM_HUNTERS)) > 0 then
+		if GetGlobalInt("RoundNumber") != 1 && SWAP_TEAMS_EVERY_ROUND == 1 && ((team.GetScore(TEAM_PROPS) + team.GetScore(TEAM_HUNTERS)) > 0 || SWAP_TEAMS_POINTS_ZERO==1) then
 		for _, pl in pairs(player.GetAll()) do
 			if pl:Team() == TEAM_PROPS || pl:Team() == TEAM_HUNTERS then
 				if pl:Team() == TEAM_PROPS then

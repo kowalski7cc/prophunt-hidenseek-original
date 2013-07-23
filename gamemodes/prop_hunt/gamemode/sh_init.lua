@@ -16,9 +16,9 @@ IncludePlayerClasses()
 
 // Information about the gamemode
 GM.Name		= "Prop Hunt"
-GM.Author	= "AMT"
-GM.Email	= "theis.andrew@gmail.com"
-GM.Website	= "http://www.amtstudios.com/mods/prop-hunt.php"
+GM.Author	= "Kow@lski (Original by AMT)"
+GM.Email	= "kowalski.7cc@xspacesoft.com"
+GM.Website	= "http://xspacesoft.github.io/PropHunt/"
 
 
 // Help info
