@@ -2,7 +2,15 @@
 {
 	"base"		"base"
 	"title"		"Prop Hunt"
-	"maps"		"^cs_"
+	"maps"          "^cs_|^de_"
+	
+	"fretta_maps"
+        {
+                "1"     "cs_"
+                "2"     "de_"
+        }
+        "selectable"            "1"
+        
 	"menusystem"	"1"
 	"workshopid"	"135509255"
 	
