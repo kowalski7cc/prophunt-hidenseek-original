@@ -15,7 +15,7 @@ local function ThrowHint( name )
 
 	if ( engine.IsPlayingDemo() ) then return end
 
-	GAMEMODE:AddNotify( "#Hint_"..name, NOTIFY_HINT, 20 )
+	notification.AddLegacy( "#Hint_"..name, NOTIFY_HINT, 20 )
 	
 	surface.PlaySound( "ambient/water/drip"..math.random(1, 4)..".wav" )
 
