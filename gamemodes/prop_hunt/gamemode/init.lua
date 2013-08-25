@@ -3,7 +3,6 @@ AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("sh_config.lua")
 AddCSLuaFile("sh_init.lua")
 AddCSLuaFile("sh_player.lua")
-AddCSLuaFile("cl_hints.lua")
 
 
 // If there is a mapfile send it to the client (sometimes servers want to change settings for certain maps)
