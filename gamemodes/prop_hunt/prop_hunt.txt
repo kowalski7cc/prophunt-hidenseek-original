@@ -2,12 +2,13 @@
 {
 	"base"		"base"
 	"title"		"Prop Hunt"
-	"maps"          "^cs_|^de_"
+	"maps"          "^cs_|^de_|^ph_"
 
 	"fretta_maps"
         {
                 "1"     "cs_"
                 "2"     "de_"
+                "3"	"ph_"
         }
         "selectable"            "1"
         
