@@ -9,18 +9,18 @@ BANNED_PROP_MODELS = {
 // Maximum time (in minutes) for this fretta gamemode (Default: 30)
 GAME_TIME = 30
 
-
 // Number of seconds hunters are blinded/locked at the beginning of the map (Default: 30)
-HUNTER_BLINDLOCK_TIME = 30
+CreateConVar("HUNTER_BLINDLOCK_TIME", "30", FCVAR_REPLICATED)
 
-
+//Create the convars here
 // Health points removed from hunters when they shoot  (Default: 5)
-HUNTER_FIRE_PENALTY = 5
-
+CreateConVar( "HUNTER_FIRE_PENALTY", "5", FCVAR_REPLICATED)
 
 // How much health to give back to the Hunter after killing a prop (Default: 20)
-HUNTER_KILL_BONUS = 20
+CreateConVar( "HUNTER_KILL_BONUS", "20", FCVAR_REPLICATED)
 
+//Whether or not we include grenade launcher ammo (default: 1)
+CreateConVar( "WEAPONS_ALLOW_GRENADE", "1", FCVAR_REPLICATED)
 
 // If you loose one of these will be played
 // Set blank to disable

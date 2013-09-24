@@ -1,9 +1,10 @@
+print(GetConVarNumber("HUNTER_KILL_BONUS"))
+
 // Send the required lua files to the client
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("sh_config.lua")
 AddCSLuaFile("sh_init.lua")
 AddCSLuaFile("sh_player.lua")
-
 
 // If there is a mapfile send it to the client (sometimes servers want to change settings for certain maps)
 if file.Exists("../gamemodes/prop_hunt/gamemode/maps/"..game.GetMap()..".lua", "LUA") then
@@ -13,7 +14,6 @@ end
 
 // Include the required lua files
 include("sh_init.lua")
-
 
 // Server only constants
 EXPLOITABLE_DOORS = {
@@ -25,7 +25,6 @@ USABLE_PROP_ENTITIES = {
 	"prop_physics",
 	"prop_physics_multiplayer"
 }
-
 
 // Send the required resources to the client
 for _, taunt in pairs(HUNTER_TAUNTS) do resource.AddFile("sound/"..taunt) end
@@ -57,7 +56,7 @@ end
 function EntityTakeDamage(ent, dmginfo)
     local att = dmginfo:GetAttacker()
 	if GAMEMODE:InRound() && ent && ent:GetClass() != "ph_prop" && !ent:IsPlayer() && att && att:IsPlayer() && att:Team() == TEAM_HUNTERS && att:Alive() then
-		att:SetHealth(att:Health() - HUNTER_FIRE_PENALTY)
+		att:SetHealth(att:Health() - GetConVar("HUNTER_FIRE_PENALTY"):GetInt())
 		if att:Health() <= 0 then
 			MsgAll(att:Name() .. " felt guilty for hurting so many innocent props and committed suicide\n")
 			att:Kill()
