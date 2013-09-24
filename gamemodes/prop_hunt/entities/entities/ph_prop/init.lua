@@ -42,7 +42,7 @@ function ENT:OnTakeDamage(dmg)
 			MsgAll(attacker:Name() .. " found and killed " .. pl:Name() .. "\n") 
 			
 			attacker:AddFrags(1)
-			attacker:SetHealth(math.Clamp(attacker:Health() + HUNTER_KILL_BONUS, 1, 100))
+			attacker:SetHealth(math.Clamp(attacker:Health() + GetConVar("HUNTER_KILL_BONUS"):GetInt(), 1, 100))
 			
 			pl:RemoveProp()
 		end
