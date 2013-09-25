@@ -43,7 +43,7 @@ end
 // Draw round timeleft and hunter release timeleft
 function HUDPaint()
 	if GetGlobalBool("InRound", false) then
-		local blindlock_time_left = (HUNTER_BLINDLOCK_TIME - (CurTime() - GetGlobalFloat("RoundStartTime", 0))) + 1
+		local blindlock_time_left = (GetConVar("HUNTER_BLINDLOCK_TIME"):GetInt() - (CurTime() - GetGlobalFloat("RoundStartTime", 0))) + 1
 		
 		if blindlock_time_left < 1 && blindlock_time_left > -6 then
 			blindlock_time_left_msg = "Hunters have been released!"
