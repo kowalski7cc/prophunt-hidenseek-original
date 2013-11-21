@@ -30,6 +30,9 @@ USABLE_PROP_ENTITIES = {
 for _, taunt in pairs(HUNTER_TAUNTS) do resource.AddFile("sound/"..taunt) end
 for _, taunt in pairs(PROP_TAUNTS) do resource.AddFile("sound/"..taunt) end
 
+function GM:AllowPlayerPickup(player, entity)
+	return false
+end
 
 // Called alot
 function GM:CheckPlayerDeathRoundEnd()
