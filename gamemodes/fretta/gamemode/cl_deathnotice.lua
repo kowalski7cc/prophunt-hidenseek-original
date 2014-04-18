@@ -186,7 +186,7 @@ function GM:AddDeathNotice( Attacker, team1, Inflictor, Victim , team2 )
         local color1
         local color2
        
-        MsgAll("Victim: "..Victim.." Attacker: "..Attacker.."\n")
+        //Deprecated: MsgAll("Victim: "..Victim.." Attacker: "..Attacker.."\n")
        
         if ( team1 == -1 ) then color1 = table.Copy( NPC_Color )
         else color1 = table.Copy( team.GetColor( team1 ) ) end
