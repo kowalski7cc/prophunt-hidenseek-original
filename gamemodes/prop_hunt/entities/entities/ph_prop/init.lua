@@ -1,4 +1,4 @@
-//Thanks to Blasteh for the fix!
+//Thanks to Blasteh for gmod update the fix and nifnat for spectate fix!
 
 // Send required files to client
 AddCSLuaFile("cl_init.lua")
@@ -34,7 +34,8 @@ function ENT:OnTakeDamage(dmg)
                                 inflictor = inflictor:GetActiveWeapon()
                                 if !inflictor || inflictor == NULL then inflictor = attacker end
                         end
-                       
+                        
+                        pl:RemoveProp() // Needs to be executed before net.Broadcast
                         net.Start( "PlayerKilledByPlayer" )
                
                         net.WriteEntity( pl )
@@ -50,7 +51,7 @@ function ENT:OnTakeDamage(dmg)
                         pl:AddDeaths(1)
                         attacker:SetHealth(math.Clamp(attacker:Health() + GetConVar("HUNTER_KILL_BONUS"):GetInt(), 1, 100))
                        
-                        pl:RemoveProp()
+                        
                 end
         end
 end
