@@ -73,21 +73,18 @@ function GM:CanEndRoundBasedGame()
 end
 
 // You can add round time by calling this (takes time in seconds)
-function GM:AddRoundTime( iAddedTime )
+function GM:AddRoundTime( fAddedTime )
 	
 	if( !GAMEMODE:InRound() ) then // don't add time if round is not in progress
 		return
 	end
 	
-	SetGlobalFloat( "RoundEndTime", GetGlobalFloat( "RoundEndTime", CurTime() ) + iAddedTime );
+	SetGlobalFloat( "RoundEndTime", GetGlobalFloat( "RoundEndTime", CurTime() ) + fAddedTime );
 	timer.Adjust( "RoundEndTimer", GetGlobalFloat( "RoundEndTime" ) - GetGlobalFloat( "RoundStartTime" ), 0, function() GAMEMODE:RoundTimerEnd() end );
 	
-	local rf = RecipientFilter()
-	rf:AddAllPlayers()
-
-	umsg.Start( "RoundAddedTime", rf ); // send a umsg so you can do something with the HUD
-		umsg.Float( iAddedTime ); // time added
-	umsg.End();
+	net.Start( "RoundAddedTime" )
+		net.WriteFloat( fAddedTime )
+	net.Broadcast()
 
 end
 

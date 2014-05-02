@@ -180,4 +180,4 @@ function GM:TeamChangeNotification( ply, oldteam, newteam )
 		chat.PlaySound( "buttons/button15.wav" );
 	end
 end
-usermessage.Hook( "fretta_teamchange", function( um )  if( GAMEMODE && um ) then  GAMEMODE:TeamChangeNotification( um:ReadEntity(), um:ReadShort(), um:ReadShort() ) end end )
+net.Receive( "fretta_teamchange", function( um )  if ( GAMEMODE ) then GAMEMODE:TeamChangeNotification( net.ReadEntity(), net.ReadUInt(8), net.ReadUInt(8) ) end end )

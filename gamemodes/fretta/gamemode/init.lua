@@ -40,18 +40,11 @@ GM.ReconnectedPlayers = {}
 function GM:Initialize()
 
 	util.AddNetworkString("PlayableGamemodes")
+	util.AddNetworkString("RoundAddedTime")
+	util.AddNetworkString("PlayableGamemodes")
+	util.AddNetworkString("fretta_teamchange")
 
-	/*
-	// Disabled - causes games to end in the middle of a round - we don't want that to happen!
-	// ::Think takes care of this anyway.
-	
-	if ( GAMEMODE.GameLength > 0 ) then
-		timer.Simple( GAMEMODE.GameLength * 60, function() GAMEMODE:EndOfGame( true ) end )
-		SetGlobalFloat( "GameEndTime", CurTime() + GAMEMODE.GameLength * 60 )
-	end
-	*/
-	
-	// If we're round based, wait 3 seconds before the first round starts
+	-- If we're round based, wait 3 seconds before the first round starts
 	if ( GAMEMODE.RoundBased ) then
 		timer.Simple( 3, function() GAMEMODE:StartRoundBasedGame() end )
 	end
@@ -398,13 +391,13 @@ function GM:OnPlayerChangedTeam( ply, oldteam, newteam )
 	
 	//PrintMessage( HUD_PRINTTALK, Format( "%s joined '%s'", ply:Nick(), team.GetName( newteam ) ) )
 	
-	// Send umsg for team change
+	// Send net msg for team change
  
-    umsg.Start( "fretta_teamchange", rf );
-		umsg.Entity( ply );
-		umsg.Short( oldteam );
-		umsg.Short( newteam );
-    umsg.End();
+    net.Start( "fretta_teamchange" )
+		net.WriteEntity( ply )
+		net.WriteUInt( oldteam, 8 )
+		net.WriteUInt( newteam, 8 )
+    net.Broadcast()
 	
 end
 
@@ -429,14 +422,14 @@ function GM:CheckTeamBalance()
 			if team.NumPlayers( id ) < team.NumPlayers( highest ) then
 				while team.NumPlayers( id ) < team.NumPlayers( highest ) - 1 do
 				
-					local ply = GAMEMODE:FindLeastCommittedPlayerOnTeam( highest )
+					local ply, reason = GAMEMODE:FindLeastCommittedPlayerOnTeam( highest )
 
 					ply:Kill()
 					ply:SetTeam( id )
 
 					// Todo: Notify player 'you have been swapped'
 					// This is a placeholder
-					PrintMessage(HUD_PRINTTALK, ply:Name().." has been changed to "..team.GetName( id ).." for team balance." )
+					PrintMessage(HUD_PRINTTALK, ply:Name().." has been changed to "..team.GetName( id ).." for team balance. ("..reason..")" )
 					
 				end
 			end
@@ -463,10 +456,10 @@ function GM:FindLeastCommittedPlayerOnTeam( teamid )
 	end
 	
 	if worstteamswapper then
-		return worstteamswapper
+		return worstteamswapper, "They changed teams recently"
 	end
 
-	return worst
+	return worst, "Least points on their team"
 	
 end
 
