@@ -1,0 +1,14 @@
+{
+	"title"		:	"Prop Hunt",
+	"type"		:	"gamemode",
+	"tags"		:	[ "fun", "roleplay" ],
+	"ignore"	:
+	[
+		"*.psd",
+		"*.vcproj",
+		"*.md",
+		".git",
+		".gitignore",
+		"*.svn*"
+	]
+}
