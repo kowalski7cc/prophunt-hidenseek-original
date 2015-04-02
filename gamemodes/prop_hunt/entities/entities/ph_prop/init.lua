@@ -1,27 +1,26 @@
-
-// Send required files to client
+-- Send required files to client
 AddCSLuaFile("cl_init.lua")
 AddCSLuaFile("shared.lua")
 
 
-// Include needed files
+-- Include needed files
 include("shared.lua")
 
 
-// Called when the entity initializes
+-- Called when the entity initializes
 function ENT:Initialize()
 	self:SetModel("models/player/Kleiner.mdl")
 	self.health = 100
 end 
 
 
-// Called when we take damge
+-- Called when we take damge
 function ENT:OnTakeDamage(dmg)
 	local pl = self:GetOwner()
 	local attacker = dmg:GetAttacker()
 	local inflictor = dmg:GetInflictor()
 
-	// Health
+	-- Health
 	if pl && pl:IsValid() && pl:Alive() && pl:IsPlayer() && attacker:IsPlayer() && dmg:GetDamage() > 0 then
 		self.health = self.health - dmg:GetDamage()
 		pl:SetHealth(self.health)
