@@ -1,34 +1,74 @@
-PropHunt plays much like a Hide and Seek. Players on the RED team, disguised as props, are given a 30 second set up time to hide, and afterwards players on the BLU team attempt to find and kill them in the allotted time period. At the end of each round the teams are swapped; the Hunters (BLU) become the Hunted (RED) and vice versa. Respawns are not permitted until the end of each round. 
-Originally made for TF2. 
+PropHunt plays much like a Hide and Seek. Players on the RED team, disguised as props, are given a 30 second set up time to hide, and afterwards players on the BLUE team must find and kill them in the given time period. At the end of each round, teams are swapped: Hunters (BLUE) become the Hunted (RED) and vice versa. Respawns arn't permitted until the end of each round. 
+-Originally made for TF2 - 
 
+!!!!!!!!! PLEASE READ THIS - PLEASE READ THIS - PLEASE READ THIS - PLEASE READ THIS !!!!!!!!! 
+I still have issues supporting this H&S mod 'cause of my little free time, sorry! I'll do my best. 
+They might not work correctly whith this/other mod/s on the workshop or they also might not work at all, damage your PC, burn your house down with lemons or even kill your cat. (Yep, true story!) 
+
+ATTENTION! the addons "Post Processing PLUS" and "Player Weld Tool" are incompatible and have conflicts with the "PropHunt" mod if you have the "Post Processing PLUS" and "Player Weld Tool" addons enabled you cannot play the PropHunt mod, 
+to play PropHunt mod disable these addons. 
+(Thanks to ALMAJ) 
 
 F.A.Q. 
+Q: How do I download/subscribe/get this? 
+A: It's pretty easy, just press the BIG GREEN button, and automatically Steam will install this for you 
+
+Q: I Subscribed to Prop Hunt, Why it doesn't show in the Steam Library? 
+A: Actually It downloads automatically when you launch Garry's Mod, When it's finished downloading, You can chose the gamemode from there. 
+
+Q: I read A1, But I still did not get the addon. 
+A: Do you have garry's mod? If not, then purchase the game. 
+
+Q: Why do i need garry's mod for Prophunt to work? 
+A: Well, Actually Prophunt is a gamemode addon for Garry's Mod. 
+
+Q: Do I need something else to play? 
+A: This gamemode might require CS:S for some props/maps. Anyway if you bought GMOD with CS:S you're ready to go ;) 
+
 Q: How do i disguise as a prop? 
-A: First you need to be in the prop team. You need also a map with props, an when you are in front of it, press 'E'. 
+A: You need to be in the "hiders" team, obviously. If so, place yourself in front of a prop and press 'E'. 
 
-Q: How do I change a team?
-A: Just press 'F2'
+Q: How do I swap team? 
+A: Just press 'F2' 
 
-Q: How do I play a taunt?
-A: Just press 'F3'
+Q: How can I taunt? <-- MUST TRY! 
+A: Just press 'F3' when in prop mode. 
+
+Q: I don't know ho this works! 
+A: Check out the discussion "Help for Newer Players." by "☾ ILikeStargates ٣٩٤#" 
+
+Q: There are error symbols and purple-black checkerboard .-. 
+A: Check out the discussion "Solution for error symbols and purple-black checkerboard." 
 
 Q: How do I play the game? 
-A: You need at least one player for team (Props and Hunters). The props (initially with the Dr. Kleiner's skin) need to find a prop in a map and press 'E' to disguise as a prop. The Hunters need to fund props, and kill them. If a hunter shoot at the enemy team, he will gain life, else it will lost life. 
+A: You need at least one player in each team (Props and Hunters). The props (initially with Dr. Kleiner's skin) need to choose a prop in the current map and press 'E' to disguise as it. The Hunters need to find and kill them by shooting suspicious objects. If a hunter shoots an enemy team component, he gains some life points, elseif it loses some. 
 
 Q: How do I use the fretta map vote? 
-A: Now it won't work well. I'll try to fix it. Now you can only manually select a map from server. 
+A: Actually, it's still a beta in this mod, I'm trying to fix it. Now you can only manually select a map from server list. 
 
 FOUND A BUG? 
-Just fill this form: http://goo.gl/dVLmJ - If you can, please give a log. 
+FIRST TRY TO DISABLE ALL PLUGINS! Check out also the incompatible plugins in the kown issues thread u.u 
+Just fill this form: {COLLEGAMENTO RIMOSSO} - If you can, please give a log. 
 
+WANT TO CONTRIBUTE? 
+Help us to find to fix all bugs! 
+Fork our Git repo: 
+http://git.xspacesoft.com/prophuntprophunt-hidenseek-original 
+
+XSPACESOFT OFFICIAL WEBSITE: 
+http://www.xspacesoft.com (translator is at bottom page) 
+Also on Play Store and Google Magazines <--WOW 
 
 CREDITS: 
 Credit goes for the original authors of both gamemodes and who made Prop Hunt compatible with GMOD 13. 
 Originally written and released by Darkimmortal (TF2) 
-If you are the autor or if you have credit, and you won't see the mod on the workshop anymore don't hesitate to contact me. I just published to Workshop and fixed something. 
+Originally ported to GMod: AMT 
+Fixed for GMod 13: Leleudk 
+Enhanced an published: Me 
+Thanks also who help answering people on the page :D 
 
-
-Tested on Windows, Mac and Ubuntu Linux. 
+If you are the autor or if you have credit, and you dont to see this mod on the Workshop anymore... just contact me 
+Tested on Windows, Mac and Ubuntu Linux. . 
 
 DEPENDENCIES: 
-THIS MOD COULD REQUIRE CS:S (For some maps)
+THIS MOD COULD REQUIRE CS:S (For some maps / elements)
