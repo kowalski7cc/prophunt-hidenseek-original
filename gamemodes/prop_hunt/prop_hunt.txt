@@ -2,23 +2,51 @@
 {
 	"base"		"base"
 	"title"		"Prop Hunt"
-	"maps"          "^cs_|^de_|^ph_"
+	"maps"          "^ph_"
 
 	"fretta_maps"
         {
-                "1"     "cs_"
-                "2"     "de_"
-                "3"	"ph_"
+	"1"	  "cs_"
+	"2"	  "de_"
+                "3"	  "ph_"
         }
         "selectable"            "1"
         
 	"menusystem"	"1"
-	"workshopid"	"135509255"
-
+	"workshopid"	"417565863"
 	"settings"
 	{
-		//For some reason these values do not create / update convars within the game. 
-		//You must manually set them via the console in order for them to change (similar to games like TTT)
+		1
+		{
+			"name"		"HUNTER_FIRE_PENALTY"
+			"text"		"Hunter Fire Penality"
+			"help"		"Health points removed from hunters when they shoot"
+			"type"		"numeric"
+			"default"	"5"
+		}
+
+
+
+		2
+		{
+			"name"		"HUNTER_KILL_BONUS"
+			"text"		"Hunter Kill Bonus"
+			"help"		"How much health to give back to the Hunter after killing a prop"
+			"type"		"numeric"
+			"default"	"100"
+		}
+
+
+
+		3
+		{
+			"name"		"SWAP_TEAMS_EVERY_ROUND"
+			"text"		"Swap Teams Every Round"
+			"help"		"Determains if players should be team swapped every round"
+			"type"		"checkbox"
+			"default"	"1"
+		}
+
 	}
 
 }
