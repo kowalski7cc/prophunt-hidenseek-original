@@ -6,22 +6,22 @@ local CLASS = {}
 CLASS.DisplayName			= "Hunter"
 CLASS.WalkSpeed 			= 230
 CLASS.CrouchedWalkSpeed 	= 0.2
-CLASS.RunSpeed				= 230
+CLASS.RunSpeed				= 250
 CLASS.DuckSpeed				= 0.2
 CLASS.DrawTeamRing			= false
 
 
 // Called by spawn and sets loadout
 function CLASS:Loadout(pl)
-	pl:Give("weapon_crowbar")
-	pl:GiveAmmo(64, "Buckshot")
-	pl:GiveAmmo(255, "SMG1")
-	pl:Give("weapon_shotgun")
-	pl:Give("weapon_smg1")
-
-	if GetConVar("WEAPONS_ALLOW_GRENADE"):GetBool() then
-		pl:Give("item_ar2_grenade")
-	end
+    pl:GiveAmmo(64, "Buckshot")
+    pl:GiveAmmo(255, "SMG1")
+    pl:GiveAmmo(12, "357")
+    
+    pl:Give("weapon_crowbar")
+    pl:Give("weapon_shotgun")
+    pl:Give("weapon_smg1")
+	pl:Give("item_ar2_grenade")
+    pl:Give("weapon_357")
 	
 	local cl_defaultweapon = pl:GetInfo("cl_defaultweapon") 
  	 
@@ -33,7 +33,7 @@ end
 
 // Called when player spawns with this class
 function CLASS:OnSpawn(pl)
-	local unlock_time = math.Clamp(GetConVar("HUNTER_BLINDLOCK_TIME"):GetInt() - (CurTime() - GetGlobalFloat("RoundStartTime", 0)), 0, GetConVar("HUNTER_BLINDLOCK_TIME"):GetInt())
+	local unlock_time = math.Clamp(HUNTER_BLINDLOCK_TIME - (CurTime() - GetGlobalFloat("RoundStartTime", 0)), 0, HUNTER_BLINDLOCK_TIME)
 	
 	//function MyLockFunc()
 	//function MyUnlockFunc()
