@@ -1,4 +1,4 @@
-"Gamemode"
+"prophunt"
 {
 	"base"		"base"
 	"title"		"Prop Hunt"
