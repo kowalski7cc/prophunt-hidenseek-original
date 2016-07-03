@@ -39,7 +39,7 @@
 			"name"		"SWAP_TEAMS_EVERY_ROUND"
 			"text"		"Swap Teams Every Round"
 			"help"		"Determains if players should be team swapped every round"
-			"type"		"Checkbox"
+			"type"		"CheckBox"
 			"default"	"1"
 		}
 	}
