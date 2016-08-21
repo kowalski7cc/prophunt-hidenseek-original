@@ -21,32 +21,26 @@
 			"name"		"HUNTER_FIRE_PENALTY"
 			"text"		"Hunter Fire Penality"
 			"help"		"Health points removed from hunters when they shoot"
-			"type"		"numeric"
+			"type"		"Numeric"
 			"default"	"5"
 		}
-
-
-
+		
 		2
 		{
 			"name"		"HUNTER_KILL_BONUS"
 			"text"		"Hunter Kill Bonus"
 			"help"		"How much health to give back to the Hunter after killing a prop"
-			"type"		"numeric"
+			"type"		"Numeric"
 			"default"	"100"
 		}
-
-
-
+		
 		3
 		{
 			"name"		"SWAP_TEAMS_EVERY_ROUND"
 			"text"		"Swap Teams Every Round"
 			"help"		"Determains if players should be team swapped every round"
-			"type"		"checkbox"
+			"type"		"CheckBox"
 			"default"	"1"
 		}
-
 	}
-
 }
