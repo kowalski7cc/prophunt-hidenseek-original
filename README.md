@@ -1,14 +1,14 @@
-# PropHunt (Hide'n'Seek) - Original #
-PropHunt plays much like a Hide and Seek. Players on the RED team, disguised as props, are given a 30 second set up time to hide, and afterwards players on the BLUE team must find and kill them in the given time period. At the end of each round, teams are swapped: Hunters (BLUE) become the Hunted (RED) and vice versa. Respawns arn't permitted until the end of each round. 
+# Prop Hunt (Hide'n'Seek) - Original #
+Prop Hunt plays much like a Hide and Seek. Players on the RED team, disguised as props, are given a 30 second set up time to hide, and afterwards players on the BLUE team must find and kill them in the given time period. At the end of each round, teams are swapped: Hunters (BLUE) become the Hunted (RED) and vice versa. Respawns aren’t permitted until the end of each round. 
 -Originally made for TF2 - 
 
 ## PLEASE READ THIS - PLEASE READ THIS - PLEASE READ THIS - PLEASE READ THIS ##
-I still have issues supporting this H&S mod 'cause of my little free time, sorry! I'll do my best. 
-They might not work correctly whith this/other mod/s on the workshop or they also might not work at all, damage your PC, burn your house down with lemons or even kill your cat. (Yep, true story!) 
+I still have issues supporting this H&S mod cause of my little free time, sorry! I'll do my best. 
+They might not work correctly with this/other mod/s on the workshop or they also might not work at all, damage your PC, burn your house down with lemons or even kill your cat. (Yep, true story!) 
 
-## Kown issues ##
-ATTENTION! the addons "Post Processing PLUS" and "Player Weld Tool" are incompatible and have conflicts with the "PropHunt" mod if you have the "Post Processing PLUS" and "Player Weld Tool" addons enabled you cannot play the PropHunt mod, 
-to play PropHunt mod disable these addons. 
+## Known issues ##
+ATTENTION! the addons "Post Processing PLUS" and "Player Weld Tool" are incompatible and have conflicts with the "Prop Hunt" mod if you have the "Post Processing PLUS" and "Player Weld Tool" addons enabled you cannot play the Prop Hunt mod, 
+to play Prop Hunt mod disable these addons. 
 (Thanks to ALMAJ) 
 
 ## F.A.Q. ##
@@ -19,15 +19,15 @@ Q: I Subscribed to Prop Hunt, Why it doesn't show in the Steam Library?
 A: Actually It downloads automatically when you launch Garry's Mod, When it's finished downloading, You can chose the gamemode from there. 
 
 Q: I read A1, But I still did not get the addon. 
-A: Do you have garry's mod? If not, then purchase the game. 
+A: Do you have Garry’s mod? If not, then purchase the game. 
 
-Q: Why do i need garry's mod for Prophunt to work? 
-A: Well, Actually Prophunt is a gamemode addon for Garry's Mod. 
+Q: Why do I need Garry’s mod for Prop Hunt to work? 
+A: Well, Actually Prop Hunt is a gamemode addon for Garry's Mod. 
 
 Q: Do I need something else to play? 
 A: This gamemode might require CS:S for some props/maps. Anyway if you bought GMOD with CS:S you're ready to go ;) 
 
-Q: How do i disguise as a prop? 
+Q: How do I disguise as a prop? 
 A: You need to be in the "hiders" team, obviously. If so, place yourself in front of a prop and press 'E'. 
 
 Q: How do I swap team? 
@@ -49,7 +49,7 @@ Q: How do I use the fretta map vote?
 A: Actually, it's still a beta in this mod, I'm trying to fix it. Now you can only manually select a map from server list. 
 
 ## FOUND A BUG? ##
-FIRST TRY TO DISABLE ALL PLUGINS! Check out also the incompatible plugins in the kown issues thread u.u 
+FIRST TRY TO DISABLE ALL PLUGINS! Check out also the incompatible plugins in the known issues thread u.u 
 Just fill this form: {COLLEGAMENTO RIMOSSO} - If you can, please give a log. 
 
 ## WANT TO CONTRIBUTE? ##
@@ -65,7 +65,7 @@ Fixed for GMod 13: Leleudk
 Enhanced an published: Me 
 Thanks also who help answering people on the page :D 
 
-If you are the autor or if you have credit, and you dont to see this mod on the Workshop anymore... just contact me 
+If you are the author or if you have credit, and you don’t to see this mod on the Workshop anymore... just contact me 
 Tested on Windows, Mac and Ubuntu Linux. . 
 
 ## DEPENDENCIES: ##
