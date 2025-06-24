@@ -4,25 +4,24 @@ include( "vgui/vgui_vote.lua" )
 g_PlayableGamemodes = {}
 g_bGotGamemodesTable = false
 
-function RcvPlayableGamemodes( length ) 
-      
+function RcvPlayableGamemodes( length )
+
 	g_PlayableGamemodes = net.ReadTable()
 	g_bGotGamemodesTable = true
-	 
- end 
- 
-net.Receive( "PlayableGamemodes", RcvPlayableGamemodes ); 
 
-local GMChooser = nil 
+end
+
+net.Receive( "PlayableGamemodes", function() pcall(RcvPlayableGamemodes) end )
+
+local GMChooser = nil
 local function GetVoteScreen()
-
+	LocalPlayer():ConCommand("-score")
 	if ( IsValid( GMChooser ) ) then return GMChooser end
-	
+
 	GMChooser = vgui.Create( "VoteScreen" )
 	return GMChooser
 
 end
- 
 
 function GM:ShowGamemodeChooser()
 
@@ -53,7 +52,7 @@ function GM:ShowMapChooserForGamemode( gmname )
 end
 
 
-local ClassChooser = nil 
+local ClassChooser = nil
 cl_classsuicide = CreateConVar( "cl_classsuicide", "0", { FCVAR_ARCHIVE } )
 
 function GM:ShowClassChooser( TEAMID )

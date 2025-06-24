@@ -48,6 +48,7 @@ function PANEL:Init()
 	self.List = vgui.Create( "DListView", self )
 	self.List:SetSortable( false )
 	self.List:DisableScrollbar()
+	self.List:SetMultiSelect( false )
 	
 	self.Header = vgui.Create( "TeamScoreboardHeader", self )
 
@@ -121,6 +122,11 @@ function PANEL:SetSortColumns( ... )
 	
 end
 
+local function LinePressed(self, mcode)
+	if mcode == MOUSE_LEFT and IsValid(self.pPlayer) then
+		gamemode.Call("ScoreboardPlayerPressed", self.pPlayer)
+	end
+end
 function PANEL:FindPlayerLine( ply )
 
 	for _, line in pairs( self.List.Lines ) do
@@ -130,6 +136,8 @@ function PANEL:FindPlayerLine( ply )
 	local line = self.List:AddLine()
 	line.pPlayer = ply
 	line.UpdateTime = {}
+
+	line.OnMousePressed = LinePressed
 	
 	Derma_Hook( line, 	"Paint", 				"Paint", 	"ScorePanelLine" )
 	Derma_Hook( line, 	"ApplySchemeSettings", 	"Scheme", 	"ScorePanelLine" )

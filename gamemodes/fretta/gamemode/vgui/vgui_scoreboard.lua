@@ -62,6 +62,8 @@ function PANEL:Init()
 		
 	end
 
+	self:MakePopup()
+
 end
 
 function PANEL:SetAsBullshitTeam( iTeamID )

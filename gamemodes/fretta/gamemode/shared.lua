@@ -10,7 +10,8 @@ include( "player_extension.lua" )
 include( "class_default.lua" )
 include( "player_colours.lua" )
 
-fretta_voting = CreateConVar( "fretta_voting", "1", { FCVAR_REPLICATED, FCVAR_NOTIFY, FCVAR_ARCHIVE }, "Allow/Dissallow voting" )
+fretta_voting_enabled = CreateConVar( "fretta_voting_enabled", "1", { FCVAR_REPLICATED, FCVAR_NOTIFY, FCVAR_ARCHIVE }, "Allow/Dissallow Fretta's built-in voting system" )
+fretta_voting_gamemode = CreateConVar( "fretta_voting_gamemode", "1", { FCVAR_REPLICATED, FCVAR_NOTIFY, FCVAR_ARCHIVE }, "Allow/Dissallow voting for a new gamemode" )
 
 GM.Name 	= "Simple Game Base"
 GM.Author 	= "Anonymous"
@@ -110,6 +111,8 @@ end
 		 Useful for when forced auto-assign is on.
 ---------------------------------------------------------*/
 function GM:TeamHasEnoughPlayers( teamid )
+
+	if teamid == TEAM_SPECTATOR then return false end
 
 	local PlayerCount = team.NumPlayers( teamid )
 

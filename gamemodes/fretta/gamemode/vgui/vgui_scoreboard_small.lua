@@ -48,7 +48,6 @@ function PANEL:Think()
 	
 	local players = team.GetPlayers( self.iTeam )
 	if ( !players || #players == 0 ) then 
-		local OldText = self:GetValue()
 		self:UpdateText( "" ) 
 		return 
 	end

@@ -73,7 +73,7 @@ function PANEL:ChooseGamemode()
 	for name, gamemode in RandomPairs( g_PlayableGamemodes ) do
 	
 		local lbl = vgui.Create( "DButton", self.ctrlList )
-			lbl:SetText( gamemode.label )
+			lbl:SetText( gamemode.label or name )
 		
 			Derma_Hook( lbl, 	"Paint", 				"Paint", 	"GamemodeButton" )
 			Derma_Hook( lbl, 	"ApplySchemeSettings", 	"Scheme", 	"GamemodeButton" )

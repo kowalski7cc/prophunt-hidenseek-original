@@ -17,7 +17,7 @@ function GM:ShowHelp()
 										panel:SetText( "Time Left: " .. util.ToMinutesSeconds( tl ) ) 
 									end
 
-		if ( GetConVarNumber( "fretta_voting" ) != 0 ) then
+		if ( GetConVarNumber( "fretta_voting_gamemode" ) != 0 ) then
 			local btn = Help:AddSelectButton( "Vote For Change", function() RunConsoleCommand( "voteforchange" ) end )
 			btn.m_colBackground = Color( 255, 200, 100 )
 			btn:SetDisabled( LocalPlayer():GetNWBool( "WantsVote" ) ) 
@@ -66,7 +66,7 @@ function GM:ShowHelp()
 				pnl:SetColWide( 66 )
 				pnl:SetRowHeight( 66 )
 			
-				for name, model in pairs( list.Get( "PlayerOptionsModel" ) ) do
+				for name, model in SortedPairs( player_manager.AllValidModels() ) do
 					
 					local icon = vgui.Create( "SpawnIcon" )
 					icon.DoClick = function() surface.PlaySound( "ui/buttonclickrelease.wav" ) RunConsoleCommand( "cl_playermodel", name ) end

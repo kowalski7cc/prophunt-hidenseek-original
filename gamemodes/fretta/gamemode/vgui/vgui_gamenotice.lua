@@ -23,21 +23,23 @@ end
 
 function PANEL:AddEntityText( txt )
 
+	if txt == nil then
+		self:AddText( "[Unknown Entity]", GAMEMODE.DeathNoticeDefaultColor )
+		return false
+	end
+
 	if ( type( txt ) == "string" ) then return false end
 	
 	if ( type( txt ) == "Player" ) then 
-	
 		self:AddText( txt:Nick(), GAMEMODE:GetTeamColor( txt ) )
 		if ( txt == LocalPlayer() ) then self.m_bHighlight = true end
-		
 		return true
-		
 	end
 
-	if( txt:IsValid() ) then
+	if( txt.IsValid && txt:IsValid() ) then
 		self:AddText( txt:GetClass(), GAMEMODE.DeathNoticeDefaultColor )	
 	else
-		self:AddText( tostring( txt ) )	
+		self:AddText( tostring( txt ), GAMEMODE.DeathNoticeDefaultColor )
 	end
 
 end
