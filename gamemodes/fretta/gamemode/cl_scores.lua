@@ -27,6 +27,9 @@ function GM:ScoreboardHide()
 	
 end
 
+function GM:ScoreboardPlayerPressed(pl)
+end
+
 function GM:AddScoreboardAvatar( ScoreBoard )
 
 	local f = function( ply ) 	
@@ -54,21 +57,21 @@ end
 function GM:AddScoreboardKills( ScoreBoard )
 
 	local f = function( ply ) return ply:Frags() end
-	ScoreBoard:AddColumn( "Kills", 50, f, 0.5, nil, 6, 6 )
+	ScoreBoard:AddColumn( "Kills", 80, f, 0.5, nil, 6, 6 )
 
 end
 
 function GM:AddScoreboardDeaths( ScoreBoard )
 
 	local f = function( ply ) return ply:Deaths() end
-	ScoreBoard:AddColumn( "Deaths", 50, f, 0.5, nil, 6, 6 )
+	ScoreBoard:AddColumn( "Deaths", 80, f, 0.5, nil, 6, 6 )
 
 end
 
 function GM:AddScoreboardPing( ScoreBoard )
 
 	local f = function( ply ) return ply:Ping() end
-	ScoreBoard:AddColumn( "Ping", 50, f, 0.1, nil, 6, 6 )
+	ScoreBoard:AddColumn( "Ping", 80, f, 0.1, nil, 6, 6 )
 
 end
 
@@ -77,10 +80,10 @@ end
 function GM:PositionScoreboard( ScoreBoard )
 
 	if ( GAMEMODE.TeamBased ) then
-		ScoreBoard:SetSize( 800, ScrH() - 50 )
+		ScoreBoard:SetSize( math.min( 1024, ScrW() ), ScrH() - 50 )
 		ScoreBoard:SetPos( (ScrW() - ScoreBoard:GetWide()) * 0.5,  25 )
 	else
-		ScoreBoard:SetSize( 420, ScrH() - 64 )
+		ScoreBoard:SetSize( 512, ScrH() - 64 )
 		ScoreBoard:SetPos( (ScrW() - ScoreBoard:GetWide()) / 2, 32 )
 	end
 

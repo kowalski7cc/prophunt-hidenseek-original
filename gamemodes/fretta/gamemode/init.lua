@@ -1,33 +1,33 @@
-/*
+--[[
 	init.lua - Server Component
 	-----------------------------------------------------
 	The entire server side bit of Fretta starts here.
-*/
+]]
 
 AddCSLuaFile( "cl_init.lua" )
 AddCSLuaFile( "shared.lua" )
-AddCSLuaFile( 'skin.lua' )
-AddCSLuaFile( 'player_class.lua' )
-AddCSLuaFile( 'class_default.lua' )
-AddCSLuaFile( 'cl_splashscreen.lua' )
-AddCSLuaFile( 'cl_selectscreen.lua' )
-AddCSLuaFile( 'cl_gmchanger.lua' )
-AddCSLuaFile( 'cl_help.lua' )
-AddCSLuaFile( 'player_extension.lua' )
-AddCSLuaFile( 'vgui/vgui_hudlayout.lua' )
-AddCSLuaFile( 'vgui/vgui_hudelement.lua' )
-AddCSLuaFile( 'vgui/vgui_hudbase.lua' )
-AddCSLuaFile( 'vgui/vgui_hudcommon.lua' )
-AddCSLuaFile( 'vgui/vgui_gamenotice.lua' )
-AddCSLuaFile( 'vgui/vgui_scoreboard.lua' )
-AddCSLuaFile( 'vgui/vgui_scoreboard_team.lua' )
-AddCSLuaFile( 'vgui/vgui_scoreboard_small.lua' )
-AddCSLuaFile( 'vgui/vgui_vote.lua' )
-AddCSLuaFile( 'cl_hud.lua' )
-AddCSLuaFile( 'cl_deathnotice.lua' )
-AddCSLuaFile( 'cl_scores.lua' )
-AddCSLuaFile( 'cl_notify.lua' )
-AddCSLuaFile( 'player_colours.lua' )
+AddCSLuaFile( "skin.lua" )
+AddCSLuaFile( "player_class.lua" )
+AddCSLuaFile( "class_default.lua" )
+AddCSLuaFile( "cl_splashscreen.lua" )
+AddCSLuaFile( "cl_selectscreen.lua" )
+AddCSLuaFile( "cl_gmchanger.lua" )
+AddCSLuaFile( "cl_help.lua" )
+AddCSLuaFile( "player_extension.lua" )
+AddCSLuaFile( "vgui/vgui_hudlayout.lua" )
+AddCSLuaFile( "vgui/vgui_hudelement.lua" )
+AddCSLuaFile( "vgui/vgui_hudbase.lua" )
+AddCSLuaFile( "vgui/vgui_hudcommon.lua" )
+AddCSLuaFile( "vgui/vgui_gamenotice.lua" )
+AddCSLuaFile( "vgui/vgui_scoreboard.lua" )
+AddCSLuaFile( "vgui/vgui_scoreboard_team.lua" )
+AddCSLuaFile( "vgui/vgui_scoreboard_small.lua" )
+AddCSLuaFile( "vgui/vgui_vote.lua" )
+AddCSLuaFile( "cl_hud.lua" )
+AddCSLuaFile( "cl_deathnotice.lua" )
+AddCSLuaFile( "cl_scores.lua" )
+AddCSLuaFile( "cl_notify.lua" )
+AddCSLuaFile( "player_colours.lua" )
 
 include( "shared.lua" )
 include( "sv_gmchanger.lua" )
@@ -48,31 +48,30 @@ function GM:Initialize()
 	if ( GAMEMODE.RoundBased ) then
 		timer.Simple( 3, function() GAMEMODE:StartRoundBasedGame() end )
 	end
-	
+
 	if ( GAMEMODE.AutomaticTeamBalance ) then
 		timer.Create( "CheckTeamBalance", 30, 0, function() GAMEMODE:CheckTeamBalance() end )
 	end
-	
 end
 
 function GM:Think()
 
 	self.BaseClass:Think()
-	
+
 	for k,v in pairs( player.GetAll() ) do
-	
+
 		local Class = v:GetPlayerClass()
 		if ( !Class ) then return end
-		
+
 		v:CallClassFunction( "Think" )
-		
+
 	end
 
-	// Game time related
+	-- Game time related
 	if( !GAMEMODE.IsEndOfGame && ( !GAMEMODE.RoundBased || ( GAMEMODE.RoundBased && GAMEMODE:CanEndRoundBasedGame() ) ) && CurTime() >= GAMEMODE.GetTimeLimit() ) then
 		GAMEMODE:EndOfGame( true )
 	end
-	
+
 end
 
 /*---------------------------------------------------------
@@ -82,7 +81,7 @@ end
 function GM:CanPlayerSuicide( ply )
 
 	if( ply:Team() == TEAM_UNASSIGNED || ply:Team() == TEAM_SPECTATOR ) then
-		return false // no suicide in spectator mode
+		return false -- no suicide in spectator mode
 	end
 
 	return !GAMEMODE.NoPlayerSuicide
@@ -132,7 +131,7 @@ end
 ---------------------------------------------------------*/
 function GM:PlayerReconnected( pl )
 
-	// Use this hook to do stuff when a player rejoins and has been in the server previously
+	-- Use this hook to do stuff when a player rejoins and has been in the server previously
 
 end
 
@@ -155,8 +154,8 @@ function GM:PlayerSpawn( pl )
 
 	pl:UpdateNameColor()
 
-	// The player never spawns straight into the game in Fretta
-	// They spawn as a spectator first (during the splash screen and team picking screens)
+	-- The player never spawns straight into the game in Fretta
+	-- They spawn as a spectator first (during the splash screen and team picking screens)
 	if ( pl.m_bFirstSpawn ) then
 	
 		pl.m_bFirstSpawn = nil
@@ -165,7 +164,7 @@ function GM:PlayerSpawn( pl )
 		
 			GAMEMODE:AutoTeam( pl )
 			
-			// The bot doesn't send back the 'seen splash' command, so fake it.
+			-- The bot doesn't send back the 'seen splash' command, so fake it.
 			if ( !GAMEMODE.TeamBased && !GAMEMODE.NoAutomaticSpawning ) then
 				pl:Spawn()
 			end
@@ -175,7 +174,7 @@ function GM:PlayerSpawn( pl )
 			pl:StripWeapons()
 			GAMEMODE:PlayerSpawnAsSpectator( pl )
 			
-			// Follow a random player until we join a team
+			-- Follow a random player until we join a team
 			if ( #player.GetAll() > 1 ) then
 				pl:Spectate( OBS_MODE_CHASE )
 				pl:SpectateEntity( table.Random( player.GetAll() ) )
@@ -196,16 +195,18 @@ function GM:PlayerSpawn( pl )
 	
 	end
 	
-	// Stop observer mode
+	-- Stop observer mode
 	pl:UnSpectate()
 
-	// Call item loadout function
+	-- Call item loadout function
 	hook.Call( "PlayerLoadout", GAMEMODE, pl )
 	
-	// Set player model
+	-- Set player model
 	hook.Call( "PlayerSetModel", GAMEMODE, pl )
 	
-	// Call class function
+	pl:SetupHands()
+	
+	-- Call class function
 	pl:OnSpawn()
 	
 end
@@ -217,7 +218,7 @@ function GM:PlayerLoadout( pl )
 
 	pl:OnLoadout()
 	
-	// Switch to prefered weapon if they have it
+	-- Switch to prefered weapon if they have it
 	local cl_defaultweapon = pl:GetInfo( "cl_defaultweapon" )
 	
 	if ( pl:HasWeapon( cl_defaultweapon )  ) then
@@ -306,7 +307,7 @@ function GM:PlayerJoinTeam( ply, teamid )
 	local Classes = team.GetClass( teamid )
 	
 	
-	// Needs to choose class
+	-- Needs to choose class
 	if ( Classes && #Classes > 1 ) then
 	
 		if ( ply:IsBot() || !GAMEMODE.SelectClass ) then
@@ -323,19 +324,19 @@ function GM:PlayerJoinTeam( ply, teamid )
 
 			ply:SendLua( "GAMEMODE:ShowClassChooser( ".. teamid .." )" )
 			ply:DisableRespawn()
-			ply:SetRandomClass() // put the player in a VALID class in case they don't choose and get spawned
+			ply:SetRandomClass() -- put the player in a VALID class in case they don't choose and get spawned
 			return
 					
 		end
 		
 	end
 	
-	// No class, use default
+	-- No class, use default
 	if ( !Classes || #Classes == 0 ) then
 		ply:SetPlayerClass( "Default" )
 	end
 	
-	// Only one class, use that
+	-- Only one class, use that
 	if ( Classes && #Classes == 1 ) then
 		GAMEMODE:PlayerRequestClass( ply, 1 )
 	end
@@ -360,19 +361,19 @@ end
 
 function GM:OnPlayerChangedTeam( ply, oldteam, newteam )
 
-	// Here's an immediate respawn thing by default. If you want to 
-	// re-create something more like CS or some shit you could probably
-	// change to a spectator or something while dead.
+	-- Here's an immediate respawn thing by default. If you want to 
+	-- re-create something more like CS or some shit you could probably
+	-- change to a spectator or something while dead.
 	if ( newteam == TEAM_SPECTATOR ) then
 	
-		// If we changed to spectator mode, respawn where we are
+		-- If we changed to spectator mode, respawn where we are
 		local Pos = ply:EyePos()
 		ply:Spawn()
 		ply:SetPos( Pos )
 		
 	elseif ( oldteam == TEAM_SPECTATOR ) then
 	
-		// If we're changing from spectator, join the game
+		-- If we're changing from spectator, join the game
 		if ( !GAMEMODE.NoAutomaticSpawning ) then
 			ply:Spawn()
 		end
@@ -383,20 +384,20 @@ function GM:OnPlayerChangedTeam( ply, oldteam, newteam )
 
 	else
 	
-		// If we're straight up changing teams just hang
-		//  around until we're ready to respawn onto the 
-		//  team that we chose
+		-- If we're straight up changing teams just hang
+		--  around until we're ready to respawn onto the 
+		--  team that we chose
 		
 	end
 	
-	//PrintMessage( HUD_PRINTTALK, Format( "%s joined '%s'", ply:Nick(), team.GetName( newteam ) ) )
+	--PrintMessage( HUD_PRINTTALK, Format( "%s joined '%s'", ply:Nick(), team.GetName( newteam ) ) )
 	
-	// Send net msg for team change
+	-- Send net msg for team change
  
     net.Start( "fretta_teamchange" )
 		net.WriteEntity( ply )
-		net.WriteUInt( oldteam, 8 )
-		net.WriteUInt( newteam, 8 )
+		net.WriteUInt( oldteam, 16 )
+		net.WriteUInt( newteam, 16 )
     net.Broadcast()
 	
 end
@@ -427,8 +428,8 @@ function GM:CheckTeamBalance()
 					ply:Kill()
 					ply:SetTeam( id )
 
-					// Todo: Notify player 'you have been swapped'
-					// This is a placeholder
+					-- Todo: Notify player 'you have been swapped'
+					-- This is a placeholder
 					PrintMessage(HUD_PRINTTALK, ply:Name().." has been changed to "..team.GetName( id ).." for team balance. ("..reason..")" )
 					
 				end
@@ -474,7 +475,7 @@ function GM:OnEndOfGame(bGamemodeVote)
 	
 end
 
-// Override OnEndOfGame to do any other stuff. like winning music.
+-- Override OnEndOfGame to do any other stuff. like winning music.
 function GM:EndOfGame( bGamemodeVote )
 
 	if GAMEMODE.IsEndOfGame then return end
@@ -484,7 +485,7 @@ function GM:EndOfGame( bGamemodeVote )
 	
 	gamemode.Call("OnEndOfGame", bGamemodeVote);
 	
-	if ( bGamemodeVote ) then
+	if ( bGamemodeVote and fretta_voting_enabled:GetBool() ) then
 	
 		MsgN( "Starting gamemode voting..." )
 		PrintMessage( HUD_PRINTTALK, "Starting gamemode voting..." );
@@ -521,19 +522,19 @@ function GM:PlayerDeathThink( pl )
 	pl.DeathTime = pl.DeathTime or CurTime()
 	local timeDead = CurTime() - pl.DeathTime
 	
-	// If we're in deathcam mode, promote to a generic spectator mode
+	-- If we're in deathcam mode, promote to a generic spectator mode
 	if ( GAMEMODE.DeathLingerTime > 0 && timeDead > GAMEMODE.DeathLingerTime && ( pl:GetObserverMode() == OBS_MODE_FREEZECAM || pl:GetObserverMode() == OBS_MODE_DEATHCAM ) ) then
 		GAMEMODE:BecomeObserver( pl )
 	end
 	
-	// If we're in a round based game, player NEVER spawns in death think
+	-- If we're in a round based game, player NEVER spawns in death think
 	if ( GAMEMODE.NoAutomaticSpawning ) then return end
 	
-	// The gamemode is holding the player from respawning.
-	// Probably because they have to choose a class..
+	-- The gamemode is holding the player from respawning.
+	-- Probably because they have to choose a class..
 	if ( !pl:CanRespawn() ) then return end
 
-	// Don't respawn yet - wait for minimum time...
+	-- Don't respawn yet - wait for minimum time...
 	if ( GAMEMODE.MinimumDeathLength ) then 
 	
 		pl:SetNWFloat( "RespawnTime", pl.DeathTime + GAMEMODE.MinimumDeathLength )
@@ -544,13 +545,13 @@ function GM:PlayerDeathThink( pl )
 		
 	end
 
-	// Force respawn
+	-- Force respawn
 	if ( pl:GetRespawnTime() != 0 && GAMEMODE.MaximumDeathLength != 0 && timeDead > GAMEMODE.MaximumDeathLength ) then
 		pl:Spawn()
 		return
 	end
 
-	// We're between min and max death length, player can press a key to spawn.
+	-- We're between min and max death length, player can press a key to spawn.
 	if ( pl:KeyPressed( IN_ATTACK ) || pl:KeyPressed( IN_ATTACK2 ) || pl:KeyPressed( IN_JUMP ) ) then
 		pl:Spawn()
 	end
@@ -569,9 +570,9 @@ end
 
 function GM:PostPlayerDeath( ply )
 
-	// Note, this gets called AFTER DoPlayerDeath.. AND it gets called
-	// for KillSilent too. So if Freezecam isn't set by DoPlayerDeath, we
-	// pick up the slack by setting DEATHCAM here.
+	-- Note, this gets called AFTER DoPlayerDeath.. AND it gets called
+	-- for KillSilent too. So if Freezecam isn't set by DoPlayerDeath, we
+	-- pick up the slack by setting DEATHCAM here.
 	
 	if ( ply:GetObserverMode() == OBS_MODE_NONE ) then
 		ply:Spectate( OBS_MODE_DEATHCAM )

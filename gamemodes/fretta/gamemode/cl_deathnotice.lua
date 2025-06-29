@@ -95,15 +95,18 @@ net.Receive( "NPCKilledNPC", RecvNPCKilledNPC )
    Name: gamemode:AddDeathNotice( Victim, Weapon, Attacker )
    Desc: Adds an death notice entry
 ---------------------------------------------------------*/
-function GM:AddDeathNotice( victim, inflictor, attacker )
+function GM:AddDeathNotice( attacker, attackerTeam, inflictor, victim, victimTeam )
 
 	if ( !IsValid( g_DeathNotify ) ) then return end
 
 	local pnl = vgui.Create( "GameNotice", g_DeathNotify )
 	
-	pnl:AddText( attacker )
+	-- Garry is a fucking retard
+	pnl.m_bHighlight = LocalPlayer():Name() == victim or LocalPlayer():Name() == attacker
+	
+	pnl:AddText( attacker or "", GAMEMODE:GetTeamNumColor(attackerTeam) )
 	pnl:AddIcon( inflictor )
-	pnl:AddText( victim )
+	pnl:AddText( victim or "", GAMEMODE:GetTeamNumColor(victimTeam) )
 	
 	g_DeathNotify:AddItem( pnl )
 

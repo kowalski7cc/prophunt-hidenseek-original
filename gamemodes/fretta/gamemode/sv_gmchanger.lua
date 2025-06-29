@@ -204,7 +204,7 @@ end
 
 function GM:VoteForChange( ply )
 
-	if ( GetConVarNumber( "fretta_voting" ) == 0 ) then return end
+	if ( GetConVarNumber( "fretta_voting_gamemode" ) == 0 ) then return end
 	if ( ply:GetNWBool( "WantsVote" ) ) then return end
 	
 	ply:SetNWBool( "WantsVote", true )
@@ -244,8 +244,8 @@ function GM:StartGamemodeVote()
 	if( !GAMEMODE.m_bVotingStarted ) then
 		SetGlobalBool( "InGamemodeVote", true )
 
-		if ( fretta_voting:GetBool() ) then
-			if #g_PlayableGamemodes >= 2 then
+		if ( fretta_voting_gamemode:GetBool() ) then
+			if table.Count( g_PlayableGamemodes ) >= 2 then
 				GAMEMODE:ClearPlayerWants()
 				BroadcastLua( "GAMEMODE:ShowGamemodeChooser()" )
 				timer.Simple( fretta_votetime:GetFloat(), function() GAMEMODE:FinishGamemodeVote() end )
@@ -299,7 +299,7 @@ function GM:WorkOutWinningGamemode()
 	if ( GAMEMODE.WinningGamemode ) then return GAMEMODE.WinningGamemode end
 	
 	-- Gamemode Voting disabled, return current gamemode
-	if ( !fretta_voting:GetBool() ) then
+	if ( !fretta_voting_gamemode:GetBool() ) then
 		return GAMEMODE.FolderName
 	end
 
@@ -339,12 +339,23 @@ function GM:FinishMapVote()
 	GAMEMODE.WinningMap = GAMEMODE:GetWinningMap()
 	GAMEMODE:ClearPlayerWants()
 	
-	-- Send bink bink notification
-	BroadcastLua( "GAMEMODE:ChangingGamemode( '"..GAMEMODE.WinningGamemode.."', '"..GAMEMODE.WinningMap.."' )" );
+	if self.WinningMap then
+		-- Send bink bink notification
+		BroadcastLua( "GAMEMODE:ChangingGamemode( '"..GAMEMODE.WinningGamemode.."', '"..GAMEMODE.WinningMap.."' )" );
 
-	-- Start map vote?
-	timer.Simple( 3, function() GAMEMODE:ChangeGamemode() end )
-	
+		-- Start map vote?
+		timer.Simple( 3, function() GAMEMODE:ChangeGamemode() end )
+	else
+		-- Notifies the server owner of the issue
+		ErrorNoHalt("No maps for this gamemode, forcing map to gm_construct\nPlease change this as soon as you can!\n")
+
+		--Picks gm_construct to prevent the server from halting
+		GAMEMODE.WinningMap = "gm_construct"
+		timer.Simple( 3, function() 
+			RunConsoleCommand( "gamemode", GAMEMODE.WorkOutWinningGamemode())
+			RunConsoleCommand( "changelevel", GAMEMODE.WinningMap )
+		end)
+	end
 end
 
 function GM:ChangeGamemode()

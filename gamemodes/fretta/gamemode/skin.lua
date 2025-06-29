@@ -275,13 +275,13 @@ function SKIN:LayoutTeamScoreboardHeader( panel )
 
 	panel.TeamName:StretchToParent( 0, 0, 0, 0 )
 	panel.TeamName:SetTextInset( 8, 0 )
-	panel.TeamName:SetColor( Color( 0, 0, 0, 220 ) )
+	panel.TeamName:SetColor( color_white )
 	panel.TeamName:SetFontInternal( "FRETTA_MEDIUM" )
 	
 	panel.TeamScore:StretchToParent( 0, 0, 0, 0 )
 	panel.TeamScore:SetContentAlignment( 6 )
 	panel.TeamScore:SetTextInset( 8, 0 )
-	panel.TeamScore:SetColor( Color( 0, 0, 0, 250 ) )
+	panel.TeamScore:SetColor( color_white )
 	panel.TeamScore:SetFontInternal( "FRETTA_MEDIUM" )
 
 end
@@ -295,7 +295,8 @@ end
 
 function SKIN:SchemeScorePanelLabel( panel )
 
-	panel:SetTextColor( GAMEMODE:GetTeamColor( panel.pPlayer ) )
+	--panel:SetTextColor( GAMEMODE:GetTeamColor( panel.pPlayer ) )
+	panel:SetTextColor( color_white )
 	panel:SetFontInternal( "FRETTA_MEDIUM_SHADOW" )
 
 end

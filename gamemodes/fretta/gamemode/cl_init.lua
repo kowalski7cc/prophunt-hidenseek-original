@@ -40,6 +40,9 @@ surface.CreateLegacyFont( "Trebuchet MS", 16, 700, true, false, "FRETTA_SMALL" )
 
 surface.CreateLegacyFont( "Trebuchet MS", ScreenScale( 10 ), 700, true, false, "FRETTA_NOTIFY", true )
 
+surface.CreateLegacyFont( "csd", ScreenScale(30), 500, true, true, "CSKillIcons" )
+surface.CreateLegacyFont( "csd", ScreenScale(60), 500, true, true, "CSSelectIcons" )
+
 CreateClientConVar( "cl_spec_mode", "5", true, true )
 
 function GM:Initialize()
@@ -164,7 +167,6 @@ function GM:InputMouseApply( cmd, x, y, angle )
 end
 
 function GM:TeamChangeNotification( ply, oldteam, newteam )
-
 	if( ply && ply:IsValid() ) then
 		local nick = ply:Nick();
 		local oldTeamColor = team.GetColor( oldteam );
@@ -172,7 +174,7 @@ function GM:TeamChangeNotification( ply, oldteam, newteam )
 		local newTeamColor = team.GetColor( newteam );
 		
 		if( newteam == TEAM_SPECTATOR ) then
-			chat.AddText( oldTeamColor, nick, color_white, " joined the ", newTeamColor, newTeamName ); 
+			chat.AddText( oldTeamColor, nick, color_white, " is now spectating" ); 
 		else
 			chat.AddText( oldTeamColor, nick, color_white, " joined ", newTeamColor, newTeamName );
 		end
@@ -180,4 +182,4 @@ function GM:TeamChangeNotification( ply, oldteam, newteam )
 		chat.PlaySound( "buttons/button15.wav" );
 	end
 end
-net.Receive( "fretta_teamchange", function( um )  if ( GAMEMODE ) then GAMEMODE:TeamChangeNotification( net.ReadEntity(), net.ReadUInt(8), net.ReadUInt(8) ) end end )
+net.Receive( "fretta_teamchange", function( um )  if ( GAMEMODE ) then GAMEMODE:TeamChangeNotification( net.ReadEntity(), net.ReadUInt(16), net.ReadUInt(16) ) end end )
