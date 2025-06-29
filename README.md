@@ -62,7 +62,9 @@ Credit goes for the original authors of both gamemodes and who made Prop Hunt co
 Originally written and released by Darkimmortal (TF2) 
 Originally ported to GMod: AMT 
 Fixed for GMod 13: Leleudk 
-Enhanced an published: Me 
+Enhanced an published: Me
+Various Contributors:
+- MrLuckyGamer 
 Thanks also who help answering people on the page :D 
 
 If you are the author or if you have credit, and you don’t to see this mod on the Workshop anymore... just contact me 
